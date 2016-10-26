@@ -1,15 +1,24 @@
 package be.vrt.ui.widget.HTMLTextView.jsoup
 
+import be.vrt.ui.widget.HTMLTextView.ElementType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.jsoup.select.Elements
 
-class JsoupParser(html : String) {
+class JsoupParser(html: String) {
 
     private val document: Document
 
     init {
         document = Jsoup.parse(html)
-        val children: Elements? = document.children()
+        test()
+    }
+
+    private fun test() {
+        document.children().forEach {
+            val elementType: ElementType = it.getElementType()
+            when (elementType) {
+                ElementType.A -> println("found A tag")
+            }
+        }
     }
 }
