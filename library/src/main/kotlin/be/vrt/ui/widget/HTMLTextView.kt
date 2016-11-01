@@ -11,7 +11,7 @@ import org.jetbrains.anko.recyclerview.v7._RecyclerView
 
 class HTMLTextView(context: Context, htmlString: String) : _RecyclerView(context) {
     init {
-        val jsoupParser = JsoupParser(htmlString)
+        val jsoupParser = JsoupParser(context, htmlString)
         val commandList: List<Command?> = jsoupParser.getCommands()
 
         commandList.forEach {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cssSelector_attr_alt">alt</string>
+    <string name="cssSelector_attr_src">src</string>
+    <string name="cssSelector_attr_href">href</string>
+</resources>
