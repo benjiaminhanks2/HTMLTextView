@@ -31,11 +31,13 @@ buildscript {
 
             //Kotlin
             kotlin               : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-            anko                 : "org.jetbrains.anko:anko-sdk15:$anko_version",
-            anko_support_v4      : "org.jetbrains.anko:anko-support-v4:$anko_version",
-            anko_appcompat       : "org.jetbrains.anko:anko-appcompat-v7:$anko_version",
-            anko_design          : "org.jetbrains.anko:anko-design:$anko_version",
-            anko_recycler_view   : "org.jetbrains.anko:anko-recyclerview-v7:$anko_version",
+            anko                 : [
+                    "org.jetbrains.anko:anko-sdk15:$anko_version",
+                    "org.jetbrains.anko:anko-support-v4:$anko_version",
+                    "org.jetbrains.anko:anko-appcompat-v7:$anko_version",
+                    "org.jetbrains.anko:anko-design:$anko_version",
+                    "org.jetbrains.anko:anko-recyclerview-v7:$anko_version",
+            ],
 
             //Testing
             junit                : "junit:junit:$junit_version"

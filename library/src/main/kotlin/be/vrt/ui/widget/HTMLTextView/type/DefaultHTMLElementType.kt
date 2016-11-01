@@ -1,6 +1,6 @@
-package be.vrt.ui.widget.HTMLTextView
+package be.vrt.ui.widget.HTMLTextView.type
 
-enum class ElementType(val shouldBeRenderedNative: Boolean = false) {
+enum class DefaultHTMLElementType(val shouldBeRenderedNative: Boolean = false) {
     DIV(true),
     SPAN(),
     P(true),
@@ -21,5 +21,5 @@ enum class ElementType(val shouldBeRenderedNative: Boolean = false) {
     H3(true),
     H4(true),
     H5(true),
-    H6(true),
+    H6(true);
 }
