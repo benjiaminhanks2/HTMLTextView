@@ -1,4 +1,4 @@
-package be.vrt.ui.widget.HTMLTextView.type
+package be.vrt.ui.type
 
 enum class DefaultHTMLElementType(val shouldBeRenderedNative: Boolean = false) {
     DIV(true),

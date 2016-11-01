@@ -1,10 +1,10 @@
-package be.vrt.ui.widget.HTMLTextView.jsoup
+package be.vrt.ui.jsoup
 
-import be.vrt.ui.widget.HTMLTextView.command.Command
-import be.vrt.ui.widget.HTMLTextView.command.ImageCommand
-import be.vrt.ui.widget.HTMLTextView.command.LinkCommand
-import be.vrt.ui.widget.HTMLTextView.command.TextCommand
-import be.vrt.ui.widget.HTMLTextView.type.DefaultHTMLElementType
+import be.vrt.ui.type.DefaultHTMLElementType
+import be.vrt.ui.command.Command
+import be.vrt.ui.command.ImageCommand
+import be.vrt.ui.command.LinkCommand
+import be.vrt.ui.command.TextCommand
 import org.jsoup.Jsoup
 import org.jsoup.helper.StringUtil
 import org.jsoup.nodes.Document

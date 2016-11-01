@@ -2,7 +2,7 @@ package be.vrt.ui.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import be.vrt.ui.widget.HTMLTextView.htmlTextView
+import be.vrt.ui.widget.htmlTextView
 import org.jetbrains.anko.verticalLayout
 
 class MainActivity : AppCompatActivity() {

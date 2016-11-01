@@ -1,11 +1,11 @@
-package be.vrt.ui.widget.HTMLTextView
+package be.vrt.ui.widget
 
 import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.ViewManager
-import be.vrt.ui.widget.HTMLTextView.command.Command
-import be.vrt.ui.widget.HTMLTextView.jsoup.JsoupParser
+import be.vrt.ui.command.Command
+import be.vrt.ui.jsoup.JsoupParser
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.recyclerview.v7._RecyclerView
 
