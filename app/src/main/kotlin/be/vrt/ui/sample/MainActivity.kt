@@ -1,4 +1,4 @@
-package be.vrt.ui.widget.htmltextview
+package be.vrt.ui.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
