@@ -11,12 +11,14 @@ import org.jetbrains.anko.recyclerview.v7._RecyclerView
 
 class HTMLTextView(context: Context, htmlString: String) : _RecyclerView(context) {
     init {
-        val jsoupParser = JsoupParser(context, htmlString)
+        val jsoupParser = JsoupParser(htmlString)
         val commandList: List<Command?> = jsoupParser.getCommands()
 
         commandList.forEach {
             Log.d(this.javaClass.simpleName, it.toString())
         }
+
+        setWillNotDraw(true)
     }
 }
 

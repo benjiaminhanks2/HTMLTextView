@@ -1,25 +1,25 @@
 package be.vrt.ui.type
 
-enum class DefaultHTMLElementType(val shouldBeRenderedNative: Boolean = false) {
-    DIV(true),
-    SPAN(),
-    P(true),
-    IMG(true),
-    A(true),
-    B(true),
-    I(true),
+enum class DefaultHTMLElementType() {
+    DIV,
+    SPAN,
+    P,
+    IMG,
+    A,
+    B,
+    I,
 
-    UL(),
-    LI(),
+    UL,
+    LI,
 
-    HEADER(),
-    ARTICLE(),
-    SECTION(),
+    HEADER,
+    ARTICLE,
+    SECTION,
 
-    H1(true),
-    H2(true),
-    H3(true),
-    H4(true),
-    H5(true),
-    H6(true);
+    H1,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6;
 }
