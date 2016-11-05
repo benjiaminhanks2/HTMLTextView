@@ -63,8 +63,11 @@ private fun processImageCommand(url: String, alt: String): Command? = if (!Strin
 
 private fun processTextCommand(text: String): Command? = if (!StringUtil.isBlank(text)) TextCommand(text) else null
 
-internal fun Element.getSrc(): String = attr(HTMLAttributes.src)
+val Element.src: String
+    get() = attr(HTMLAttributes.src)
 
-internal fun Element.getAlt(): String = attr(HTMLAttributes.alt)
+val Element.alt: String
+    get() = attr(HTMLAttributes.alt)
 
-internal fun Element.getHref(): String = attr(HTMLAttributes.href)
+val Element.href: String
+    get() = attr(HTMLAttributes.href)

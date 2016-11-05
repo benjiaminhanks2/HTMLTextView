@@ -18,20 +18,23 @@ buildscript {
 
         //Testing
         junit_version = "4.12"
+        mockito_kotlin_version = "0.10.0"
+        spek_version = "1.0.89"
+        junit_platform_version = "1.0.0-M2"
     }
 
     ext.libraries = [
-            android_appcompat    : "com.android.support:appcompat-v7:$android_support_version",
-            design_support       : "com.android.support:design:$android_support_version",
+            android_appcompat: "com.android.support:appcompat-v7:$android_support_version",
+            design_support   : "com.android.support:design:$android_support_version",
 
-            jsoup                : "org.jsoup:jsoup:$jsoup_version",
+            jsoup            : "org.jsoup:jsoup:$jsoup_version",
 
             //Reactive
-            rxjava2              : "io.reactivex.rxjava2:rxjava:$rxjava2_version",
+            rxjava2          : "io.reactivex.rxjava2:rxjava:$rxjava2_version",
 
             //Kotlin
-            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-            anko                 : [
+            kotlin           : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            anko             : [
                     "org.jetbrains.anko:anko-sdk15:$anko_version",
                     "org.jetbrains.anko:anko-support-v4:$anko_version",
                     "org.jetbrains.anko:anko-appcompat-v7:$anko_version",
@@ -40,7 +43,13 @@ buildscript {
             ],
 
             //Testing
-            junit                : "junit:junit:$junit_version"
+            junit            : "junit:junit:$junit_version",
+            mockito_kotlin   : "com.nhaarman:mockito-kotlin:$mockito_kotlin_version",
+            spek             : [
+                    "org.jetbrains.spek:spek-api:$spek_version",
+                    "org.jetbrains.spek:spek-junit-platform-engine:$spek_version",
+                    "org.junit.platform:junit-platform-runner:$junit_platform_version"
+            ]
     ]
 
     repositories {
