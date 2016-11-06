@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import be.vrt.ui.model.HTMLElement
 
 class HTMLDelegationAdapter(var items : List<HTMLElement>,
-                            val delegatesManager: AdapterDelegatesManager = AdapterDelegatesManager()) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+                            val delegatesManager: AdapterDelegatesManager<RecyclerView.ViewHolder, AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> = AdapterDelegatesManager()) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int = items.size
 

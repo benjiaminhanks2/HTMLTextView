@@ -5,22 +5,22 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import be.vrt.ui.model.HTMLElement
 
-abstract class AdapterDelegatesManager {
+class AdapterDelegatesManager<VH : RecyclerView.ViewHolder, T : AbsHTMLElementAdapterDelegate<VH>> {
 
     object COMPANION {
         val FALLBACK_DELEGATE_VIEW_TYPE = Integer.MAX_VALUE - 1
     }
 
-    internal val delegates: SparseArrayCompat<AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> = SparseArrayCompat()
+    internal val delegates: SparseArrayCompat<T> = SparseArrayCompat()
     val fallbackDelegate = FallBackDelegate()
 
     init {
-        addDelegate(COMPANION.FALLBACK_DELEGATE_VIEW_TYPE, fallbackDelegate)
+        addDelegate(COMPANION.FALLBACK_DELEGATE_VIEW_TYPE, fallbackDelegate as T)
     }
 
     fun addDelegate(viewType: Int,
-                    delegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>,
-                    allowReplacingDelegate: Boolean = false): AdapterDelegatesManager {
+                    delegate: T,
+                    allowReplacingDelegate: Boolean = false): AdapterDelegatesManager<VH, T> {
         if (!allowReplacingDelegate && delegates.get(viewType) != null) {
             throw IllegalArgumentException(
                     "An AdapterDelegate is already registered for the viewType = "
@@ -33,7 +33,7 @@ abstract class AdapterDelegatesManager {
         return this
     }
 
-    fun removeDelegate(delegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>): AdapterDelegatesManager {
+    fun removeDelegate(delegate: T): AdapterDelegatesManager<VH, T> {
         val indexToRemove = delegates.indexOfValue(delegate)
 
         if (indexToRemove >= 0) {
@@ -42,16 +42,16 @@ abstract class AdapterDelegatesManager {
         return this
     }
 
-    fun removeDelegate(viewType: Int): AdapterDelegatesManager {
+    fun removeDelegate(viewType: Int): AdapterDelegatesManager<VH, T> {
         delegates.remove(viewType)
         return this
     }
 
-    fun getItemViewType(items : List<HTMLElement>, position: Int): Int {
+    fun getItemViewType(items: List<HTMLElement>, position: Int): Int {
         val delegatesCount: Int = delegates.size()
         for (i in 0..delegatesCount) {
             val adapterDelegate = i.toAdapterDelegate()
-            if (adapterDelegate?.isForViewType(items[position], items, position) ?: false)  {
+            if (adapterDelegate?.isForViewType(items[position], items, position) ?: false) {
                 return delegates.keyAt(position)
             }
         }
@@ -59,37 +59,37 @@ abstract class AdapterDelegatesManager {
         return COMPANION.FALLBACK_DELEGATE_VIEW_TYPE
     }
 
-    fun onCreateViewHolder(parent : ViewGroup, viewType: Int) : RecyclerView.ViewHolder {
-        val adapterDelegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = getDelegateForViewType(viewType)
+    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val adapterDelegate: T = getDelegateForViewType(viewType)
         return adapterDelegate.onCreateViewHolder(parent)
     }
 
-    fun onBindViewHolder(items : List<HTMLElement>, position: Int, viewHolder : RecyclerView.ViewHolder, payLoads : List<Any> = emptyList()) {
-        val adapterDelegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = getDelegateForViewType(viewHolder.itemViewType)
+    fun onBindViewHolder(items: List<HTMLElement>, position: Int, viewHolder: VH, payLoads: List<Any> = emptyList()) {
+        val adapterDelegate: T = getDelegateForViewType(viewHolder.itemViewType)
         adapterDelegate.onBindViewHolder(items[position], viewHolder, payLoads)
     }
 
-    fun onViewRecycled(viewHolder : RecyclerView.ViewHolder) {
-        val adapterDelegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = getDelegateForViewType(viewHolder.itemViewType)
+    fun onViewRecycled(viewHolder: RecyclerView.ViewHolder) {
+        val adapterDelegate: T = getDelegateForViewType(viewHolder.itemViewType)
         adapterDelegate.onViewRecycled(viewHolder)
     }
 
-    fun onFailedToRecycleView(viewHolder : RecyclerView.ViewHolder) : Boolean {
-        val adapterDelegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = getDelegateForViewType(viewHolder.itemViewType)
+    fun onFailedToRecycleView(viewHolder: RecyclerView.ViewHolder): Boolean {
+        val adapterDelegate: T = getDelegateForViewType(viewHolder.itemViewType)
         return adapterDelegate.onFailedToRecycleView(viewHolder)
     }
 
-    fun onViewAttachedToWindow(viewHolder : RecyclerView.ViewHolder) {
-        val adapterDelegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = getDelegateForViewType(viewHolder.itemViewType)
+    fun onViewAttachedToWindow(viewHolder: RecyclerView.ViewHolder) {
+        val adapterDelegate: T = getDelegateForViewType(viewHolder.itemViewType)
         adapterDelegate.onFailedToRecycleView(viewHolder)
     }
 
-    fun onViewDetachedFromWindow(viewHolder : RecyclerView.ViewHolder) {
-        val adapterDelegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = getDelegateForViewType(viewHolder.itemViewType)
+    fun onViewDetachedFromWindow(viewHolder: RecyclerView.ViewHolder) {
+        val adapterDelegate: T = getDelegateForViewType(viewHolder.itemViewType)
         adapterDelegate.onFailedToRecycleView(viewHolder)
     }
 
-    fun getViewType(delegate: AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>) : Int {
+    fun getViewType(delegate: T): Int {
         val index = delegates.indexOfValue(delegate)
         if (index == -1) {
             return -1
@@ -97,7 +97,7 @@ abstract class AdapterDelegatesManager {
         return delegates.keyAt(index)
     }
 
-    fun getDelegateForViewType(viewType: Int) : AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder> = delegates.get(viewType)
+    fun getDelegateForViewType(viewType: Int): T = delegates.get(viewType)
 
-    private fun Int.toAdapterDelegate(): AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>? = delegates.get(this)
+    private fun Int.toAdapterDelegate(): T? = delegates.get(this)
 }
