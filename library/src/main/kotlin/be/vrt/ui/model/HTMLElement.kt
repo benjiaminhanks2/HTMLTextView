@@ -1,9 +1,10 @@
 package be.vrt.ui.model
 
 import be.vrt.ui.jsoup.*
-import be.vrt.ui.type.HTMLTag
+import be.vrt.ui.model.type.HTMLTag
+import org.jsoup.nodes.Element
 
-class HTMLElement(element: org.jsoup.nodes.Element) {
+class HTMLElement(element: Element) {
 
     val htmlTag : HTMLTag?
     val cssClass : MutableSet<String>?

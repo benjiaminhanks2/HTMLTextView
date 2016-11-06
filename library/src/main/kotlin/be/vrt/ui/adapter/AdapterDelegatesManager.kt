@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import be.vrt.ui.model.HTMLElement
 
-class AdapterDelegatesManager<VH : RecyclerView.ViewHolder, T : AbsHTMLElementAdapterDelegate<VH>> {
+class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> {
 
     object COMPANION {
         val FALLBACK_DELEGATE_VIEW_TYPE = Integer.MAX_VALUE - 1
@@ -20,7 +20,7 @@ class AdapterDelegatesManager<VH : RecyclerView.ViewHolder, T : AbsHTMLElementAd
 
     fun addDelegate(viewType: Int,
                     delegate: T,
-                    allowReplacingDelegate: Boolean = false): AdapterDelegatesManager<VH, T> {
+                    allowReplacingDelegate: Boolean = false): AdapterDelegatesManager<T> {
         if (!allowReplacingDelegate && delegates.get(viewType) != null) {
             throw IllegalArgumentException(
                     "An AdapterDelegate is already registered for the viewType = "
@@ -33,7 +33,7 @@ class AdapterDelegatesManager<VH : RecyclerView.ViewHolder, T : AbsHTMLElementAd
         return this
     }
 
-    fun removeDelegate(delegate: T): AdapterDelegatesManager<VH, T> {
+    fun removeDelegate(delegate: T): AdapterDelegatesManager<T> {
         val indexToRemove = delegates.indexOfValue(delegate)
 
         if (indexToRemove >= 0) {
@@ -42,7 +42,7 @@ class AdapterDelegatesManager<VH : RecyclerView.ViewHolder, T : AbsHTMLElementAd
         return this
     }
 
-    fun removeDelegate(viewType: Int): AdapterDelegatesManager<VH, T> {
+    fun removeDelegate(viewType: Int): AdapterDelegatesManager<T> {
         delegates.remove(viewType)
         return this
     }
@@ -64,7 +64,7 @@ class AdapterDelegatesManager<VH : RecyclerView.ViewHolder, T : AbsHTMLElementAd
         return adapterDelegate.onCreateViewHolder(parent)
     }
 
-    fun onBindViewHolder(items: List<HTMLElement>, position: Int, viewHolder: VH, payLoads: List<Any> = emptyList()) {
+    fun onBindViewHolder(items: List<HTMLElement>, position: Int, viewHolder: RecyclerView.ViewHolder, payLoads: List<Any> = emptyList()) {
         val adapterDelegate: T = getDelegateForViewType(viewHolder.itemViewType)
         adapterDelegate.onBindViewHolder(items[position], viewHolder, payLoads)
     }

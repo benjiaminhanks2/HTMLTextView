@@ -2,13 +2,14 @@ package be.vrt.ui.jsoup
 
 import be.vrt.ui.constant.HTMLAttributes
 import be.vrt.ui.constant.HTMLElements
-import be.vrt.ui.type.HTMLTag
+import be.vrt.ui.model.HTMLElement
+import be.vrt.ui.model.type.HTMLTag
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 
 internal fun Document.selectAllHTMLElements(): Elements = this.body().select(HTMLElements.allElementSelector)
 
-fun org.jsoup.nodes.Element.toElement(): be.vrt.ui.model.HTMLElement = be.vrt.ui.model.HTMLElement(this)
+fun org.jsoup.nodes.Element.toElement(): HTMLElement = HTMLElement(this)
 
 val org.jsoup.nodes.Element.htmlTag: HTMLTag?
     get() = try {

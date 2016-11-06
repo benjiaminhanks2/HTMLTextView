@@ -14,7 +14,7 @@ abstract class AbsHTMLElementAdapterDelegate<VH : RecyclerView.ViewHolder> {
 
     internal abstract fun onCreateViewHolder(parent: ViewGroup): VH
 
-    internal fun onViewRecycled(viewHolder: RecyclerView.ViewHolder) { }
+    internal fun onViewRecycled(holder: RecyclerView.ViewHolder) { }
 
     internal fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) { }
 

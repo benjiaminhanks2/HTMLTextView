@@ -1,4 +1,4 @@
-package be.vrt.ui.type
+package be.vrt.ui.model.type
 
 enum class HTMLTag() {
     DIV,
