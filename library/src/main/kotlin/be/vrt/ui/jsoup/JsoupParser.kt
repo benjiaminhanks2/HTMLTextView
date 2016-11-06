@@ -15,7 +15,7 @@ class JsoupParser(html: String) {
         htmlElements
     }
 
-    private val htmlElements: List<HTMLElement>
+    val htmlElements: List<HTMLElement>
         get() {
             val bodyElements: Elements = document.selectAllHTMLElements()
             val HTMLElements: List<HTMLElement> = bodyElements

@@ -2,16 +2,23 @@ package be.vrt.ui.widget
 
 import android.app.Activity
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.view.ViewManager
+import be.vrt.ui.adapter.HTMLDelegationAdapter
 import be.vrt.ui.jsoup.JsoupParser
+import be.vrt.ui.model.HTMLElement
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.recyclerview.v7._RecyclerView
 
 class HTMLTextView(context: Context, htmlString: String) : _RecyclerView(context) {
     init {
-        val jsoupParser = JsoupParser(htmlString)
+        val htmlElements: List<HTMLElement> = JsoupParser(htmlString).htmlElements
 
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        setHasFixedSize(true)
         setWillNotDraw(true)
+
+        adapter = HTMLDelegationAdapter(htmlElements)
     }
 }
 
