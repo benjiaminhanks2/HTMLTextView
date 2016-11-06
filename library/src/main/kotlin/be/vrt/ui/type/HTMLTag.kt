@@ -1,8 +1,6 @@
 package be.vrt.ui.type
 
 enum class HTMLTag() {
-    HTML,
-
     DIV,
     SPAN,
     P,
@@ -14,7 +12,6 @@ enum class HTMLTag() {
     UL,
     LI,
 
-    BODY,
     HEADER,
     ARTICLE,
     SECTION,

@@ -1,9 +1,12 @@
 package be.vrt.ui.adapter
 
+import android.graphics.Color
 import android.view.ViewGroup
 import be.vrt.ui.adapter.viewholder.FallBackViewHolder
 import be.vrt.ui.model.HTMLElement
 import org.jetbrains.anko.UI
+import org.jetbrains.anko.sp
+import org.jetbrains.anko.textColor
 import org.jetbrains.anko.textView
 
 class FallBackDelegate : AbsHTMLElementAdapterDelegate<FallBackViewHolder>() {
@@ -20,6 +23,8 @@ class FallBackDelegate : AbsHTMLElementAdapterDelegate<FallBackViewHolder>() {
         val view = parent.context.UI {
             textView {
                 id = COMPANION.id
+                textSize = sp(12).toFloat()
+                textColor = Color.BLACK
             }
         }.view
         return FallBackViewHolder(view)
