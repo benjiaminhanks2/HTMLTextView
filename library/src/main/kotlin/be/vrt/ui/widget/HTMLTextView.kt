@@ -2,9 +2,7 @@ package be.vrt.ui.widget
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.ViewManager
-import be.vrt.ui.command.Command
 import be.vrt.ui.jsoup.JsoupParser
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.recyclerview.v7._RecyclerView
@@ -12,11 +10,6 @@ import org.jetbrains.anko.recyclerview.v7._RecyclerView
 class HTMLTextView(context: Context, htmlString: String) : _RecyclerView(context) {
     init {
         val jsoupParser = JsoupParser(htmlString)
-        val commandList: List<Command?> = jsoupParser.getCommands()
-
-        commandList.forEach {
-            Log.d(this.javaClass.simpleName, it.toString())
-        }
 
         setWillNotDraw(true)
     }

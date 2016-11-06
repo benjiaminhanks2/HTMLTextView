@@ -1,5 +1,5 @@
 package be.vrt.ui.constant
 
-object HTMLElement {
+object HTMLElements {
     val allElementSelector : String = "*"
 }

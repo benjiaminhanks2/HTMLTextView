@@ -1,6 +1,8 @@
 package be.vrt.ui.type
 
-enum class DefaultHTMLElementType() {
+enum class HTMLTag() {
+    HTML,
+
     DIV,
     SPAN,
     P,
@@ -12,9 +14,11 @@ enum class DefaultHTMLElementType() {
     UL,
     LI,
 
+    BODY,
     HEADER,
     ARTICLE,
     SECTION,
+    FOOTER,
 
     H1,
     H2,
