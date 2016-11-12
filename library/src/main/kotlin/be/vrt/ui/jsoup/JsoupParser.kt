@@ -4,7 +4,6 @@ import be.vrt.ui.model.HTMLElement
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
-import java.util.*
 
 class JsoupParser(html: String) {
 
@@ -19,15 +18,11 @@ class JsoupParser(html: String) {
         get() {
             val bodyElements: Elements = document.selectAllHTMLElements()
             val HTMLElements: List<HTMLElement> = bodyElements
-                    .map { it.toElement() }
-                    .filterUnknownTagElements()
+                    .map(::HTMLElement)
+                    .filter(unknownTagPredicate)
 
             return HTMLElements
         }
 }
 
-private fun Iterable<HTMLElement>.filterUnknownTagElements(): List<HTMLElement> {
-    val destination = ArrayList<HTMLElement>()
-    for (element in this) if (element.htmlTag != null) destination.add(element)
-    return destination
-}
+val unknownTagPredicate: (HTMLElement) -> Boolean = { it.htmlTag != null }

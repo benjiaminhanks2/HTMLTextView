@@ -5,8 +5,7 @@ import be.vrt.ui.adapter.layout.text.TextualLayout
 import be.vrt.ui.adapter.viewholder.text.AbsTextualViewHolder
 import be.vrt.ui.model.HTMLElement
 
-class FallBackViewHolder(textualView: TextualLayout)
-    : AbsTextualViewHolder(textualView) {
+class FallBackViewHolder(textualView: TextualLayout) : AbsTextualViewHolder(textualView) {
 
     override fun bind(item: HTMLElement) {
         /*if (BuildConfig.DEBUG) {

@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
 import be.vrt.ui.adapter.delegate.fallback.FallBackDelegate
 import be.vrt.ui.model.HTMLElement
+import be.vrt.ui.utils.any
 
 class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> {
 
-    object COMPANION {
+    companion object {
         val FALLBACK_DELEGATE_VIEW_TYPE = Integer.MAX_VALUE - 1
     }
 
@@ -17,7 +18,7 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
     val fallbackDelegate = FallBackDelegate()
 
     init {
-        addDelegate(COMPANION.FALLBACK_DELEGATE_VIEW_TYPE, fallbackDelegate as T)
+        addDelegate(FALLBACK_DELEGATE_VIEW_TYPE, fallbackDelegate as T)
     }
 
     fun addDelegate(viewType: Int,
@@ -49,17 +50,8 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
         return this
     }
 
-    fun getItemViewType(items: List<HTMLElement>, position: Int): Int {
-        val delegatesCount: Int = delegates.size()
-        for (i in 0..delegatesCount) {
-            val adapterDelegate = i.toAdapterDelegate()
-            if (adapterDelegate?.isForViewType(items[position], items, position) ?: false) {
-                return delegates.keyAt(position)
-            }
-        }
-
-        return COMPANION.FALLBACK_DELEGATE_VIEW_TYPE
-    }
+    fun getItemViewType(items: List<HTMLElement>, position: Int): Int =
+            if (delegates.any { it.isForViewType(items[position], items, position) }) delegates.keyAt(position) else FALLBACK_DELEGATE_VIEW_TYPE
 
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val adapterDelegate: T = getDelegateForViewType(viewType)
@@ -91,15 +83,8 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
         adapterDelegate.onFailedToRecycleView(viewHolder)
     }
 
-    fun getViewType(delegate: T): Int {
-        val index = delegates.indexOfValue(delegate)
-        if (index == -1) {
-            return -1
-        }
-        return delegates.keyAt(index)
-    }
+    val T.viewType: Int
+        get() = if (delegates.indexOfValue(this) == -1) -1 else delegates.keyAt(delegates.indexOfValue(this))
 
     fun getDelegateForViewType(viewType: Int): T = delegates.get(viewType)
-
-    private fun Int.toAdapterDelegate(): T? = delegates.get(this)
 }
