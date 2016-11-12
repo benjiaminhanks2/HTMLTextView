@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import be.vrt.ui.adapter.DelegationAdapter
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
+import be.vrt.ui.adapter.delegate.heading.HeadingDelegate
 import be.vrt.ui.jsoup.JsoupParser
 import be.vrt.ui.model.HTMLElement
 
@@ -14,6 +15,8 @@ class HTMLTextView(context: Context) : RecyclerView(context) {
 
     init {
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        addAdapterDelegate(HeadingDelegate() as AbsHTMLElementAdapterDelegate<ViewHolder>)
+
         super.setAdapter(htmlDelegationAdapter)
     }
 
@@ -22,7 +25,6 @@ class HTMLTextView(context: Context) : RecyclerView(context) {
         htmlDelegationAdapter.items = htmlElements
     }
 
-
     fun setAdapterDelegates(delegates: List<AbsHTMLElementAdapterDelegate<ViewHolder>>) {
         delegates.forEach {
             htmlDelegationAdapter.delegatesManager.addDelegate(it.viewType, it)
@@ -30,7 +32,12 @@ class HTMLTextView(context: Context) : RecyclerView(context) {
         htmlDelegationAdapter.notifyDataSetChanged()
     }
 
+    fun addAdapterDelegate(delegate: AbsHTMLElementAdapterDelegate<ViewHolder>) {
+        htmlDelegationAdapter.delegatesManager.addDelegate(delegate.viewType, delegate)
+        htmlDelegationAdapter.notifyDataSetChanged()
+    }
 
+    //<editor-fold desc="Deprecation">
     @Deprecated(message = "Use addAdapterDelegate", level = DeprecationLevel.HIDDEN)
     override fun setAdapter(adapter: Adapter<*>?) {
         super.setAdapter(adapter)
@@ -40,9 +47,5 @@ class HTMLTextView(context: Context) : RecyclerView(context) {
     override fun getAdapter(): Adapter<*> {
         return super.getAdapter()
     }
-
-    fun addAdapterDelegate(delegate: AbsHTMLElementAdapterDelegate<ViewHolder>) {
-        htmlDelegationAdapter.delegatesManager.addDelegate(delegate.viewType, delegate)
-        htmlDelegationAdapter.notifyDataSetChanged()
-    }
+    //</editor-fold>
 }

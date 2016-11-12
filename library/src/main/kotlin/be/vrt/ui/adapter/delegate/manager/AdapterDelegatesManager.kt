@@ -2,11 +2,11 @@ package be.vrt.ui.adapter.delegate.manager
 
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
 import be.vrt.ui.adapter.delegate.fallback.FallBackDelegate
 import be.vrt.ui.model.HTMLElement
-import be.vrt.ui.utils.forEachIndexed
 
 class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> {
 
@@ -50,11 +50,27 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
     }
 
     fun getItemViewType(items: List<HTMLElement>, position: Int): Int {
-        delegates.forEachIndexed { index, adapter ->
-            if (adapter.isForViewType(items[position], items, position)) return delegates.keyAt(index)
+        /*       val viewType: Int = delegates.findAppropriateViewType(FALLBACK_DELEGATE_VIEW_TYPE) {
+                   adapter ->
+                   adapter?.isForViewType(items[position], items, position) == true
+               }*/
+
+        var viewType: Int = FALLBACK_DELEGATE_VIEW_TYPE
+        (0..delegates.size() - 1).forEach {
+            index ->
+            val adapterDelegate: T = index.getDelegate()
+            if (adapterDelegate.isForViewType(items[position], items, position) == true) {
+                viewType = delegates.keyAt(index)
+                Log.d(this.javaClass.simpleName, "position $position viewType: $viewType")
+
+                return@forEach
+            }
         }
-        return FALLBACK_DELEGATE_VIEW_TYPE
+
+        return viewType
     }
+
+    private fun Int.getDelegate(): T = delegates.get(delegates.keyAt(this))
 
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val adapterDelegate: T = getDelegateForViewType(viewType)

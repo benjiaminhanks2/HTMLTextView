@@ -20,7 +20,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             }
         }
 
-        val H2Style: (TextView) -> Unit = object : TextualViewStyle {
+        val H2Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 14f
@@ -29,7 +29,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             }
         }
 
-        val H3Style: (TextView) -> Unit = object : TextualViewStyle {
+        val H3Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 13f
@@ -38,7 +38,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             }
         }
 
-        val H4Style: (TextView) -> Unit = object : TextualViewStyle {
+        val H4Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 12f
@@ -47,7 +47,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             }
         }
 
-        val H5Style: (TextView) -> Unit = object : TextualViewStyle {
+        val H5Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 11f
@@ -56,7 +56,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             }
         }
 
-        val H6Style: (TextView) -> Unit = object : TextualViewStyle {
+        val H6Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 10f
