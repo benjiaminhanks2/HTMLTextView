@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
 import be.vrt.ui.adapter.delegate.fallback.FallBackDelegate
 import be.vrt.ui.model.HTMLElement
-import be.vrt.ui.utils.any
+import be.vrt.ui.utils.forEachIndexed
 
 class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> {
 
@@ -31,7 +31,6 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
                             + ". Already registered AdapterDelegate is "
                             + delegates.get(viewType))
         }
-
         delegates.put(viewType, delegate)
         return this
     }
@@ -50,8 +49,12 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
         return this
     }
 
-    fun getItemViewType(items: List<HTMLElement>, position: Int): Int =
-            if (delegates.any { it.isForViewType(items[position], items, position) }) delegates.keyAt(position) else FALLBACK_DELEGATE_VIEW_TYPE
+    fun getItemViewType(items: List<HTMLElement>, position: Int): Int {
+        delegates.forEachIndexed { index, adapter ->
+            if (adapter.isForViewType(items[position], items, position)) return delegates.keyAt(index)
+        }
+        return FALLBACK_DELEGATE_VIEW_TYPE
+    }
 
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val adapterDelegate: T = getDelegateForViewType(viewType)

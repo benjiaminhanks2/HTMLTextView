@@ -4,8 +4,8 @@ import android.R.attr.*
 import android.graphics.Color
 import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
-import be.vrt.ui.adapter.layout.text.DefaultTextualLayout
-import be.vrt.ui.adapter.viewholder.FallBackViewHolder
+import be.vrt.ui.adapter.delegate.manager.AdapterDelegatesManager
+import be.vrt.ui.adapter.viewholder.fallback.FallBackViewHolder
 import be.vrt.ui.model.HTMLElement
 import org.jetbrains.anko.*
 
