@@ -7,8 +7,7 @@ import be.vrt.ui.adapter.layout.style.TextualViewStyle
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.textView
 
-abstract class TextualLayout(val context: Context, val textualStyle: TextualViewStyle) : Layout<TextView, TextualViewStyle> {
-
+class TextualLayout(val context: Context, val textualStyle: TextualViewStyle = TextualViewStyle.defaultStyle) : Layout<TextView, TextualViewStyle> {
     override val view: TextView by lazy {
         context.UI {
             textView {

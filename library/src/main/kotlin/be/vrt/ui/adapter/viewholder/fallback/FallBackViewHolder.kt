@@ -1,4 +1,4 @@
-package be.vrt.ui.adapter.viewholder
+package be.vrt.ui.adapter.viewholder.fallback
 
 import android.util.Log
 import be.vrt.ui.adapter.layout.text.TextualLayout
