@@ -9,7 +9,7 @@ import org.jsoup.select.Elements
 
 internal fun Document.selectAllHTMLElements(): Elements = this.body().select(HTMLElements.allElementSelector)
 
-fun org.jsoup.nodes.Element.toElement(): HTMLElement = HTMLElement(this)
+fun org.jsoup.nodes.Element.toHtmlElement(): HTMLElement = HTMLElement(this)
 
 val org.jsoup.nodes.Element.htmlTag: HTMLTag?
     get() = try {

@@ -7,7 +7,7 @@ import be.vrt.ui.model.HTMLElement
 
 class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> {
 
-    object COMPANION {
+    companion object {
         val FALLBACK_DELEGATE_VIEW_TYPE = Integer.MAX_VALUE - 1
     }
 
@@ -15,7 +15,7 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
     val fallbackDelegate = FallBackDelegate()
 
     init {
-        addDelegate(COMPANION.FALLBACK_DELEGATE_VIEW_TYPE, fallbackDelegate as T)
+        addDelegate(FALLBACK_DELEGATE_VIEW_TYPE, fallbackDelegate as T)
     }
 
     fun addDelegate(viewType: Int,
@@ -56,7 +56,7 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
             }
         }
 
-        return COMPANION.FALLBACK_DELEGATE_VIEW_TYPE
+        return FALLBACK_DELEGATE_VIEW_TYPE
     }
 
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

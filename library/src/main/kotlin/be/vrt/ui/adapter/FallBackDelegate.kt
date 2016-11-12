@@ -30,4 +30,7 @@ class FallBackDelegate : AbsHTMLElementAdapterDelegate<FallBackViewHolder>() {
         }.view
         return FallBackViewHolder(view)
     }
+
+    override val viewType: Int
+        get() = AdapterDelegatesManager.FALLBACK_DELEGATE_VIEW_TYPE
 }
