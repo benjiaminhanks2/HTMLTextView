@@ -8,7 +8,7 @@ import be.vrt.ui.model.HTMLElement
 
 abstract class AbsTextualViewHolder(textualLayout: TextualLayout) : AbsViewHolder<TextView, TextualViewStyle, TextualLayout>(textualLayout) {
 
-    var textView: TextView
+    val textView: TextView
 
     init {
         this.textView = textualLayout.view
