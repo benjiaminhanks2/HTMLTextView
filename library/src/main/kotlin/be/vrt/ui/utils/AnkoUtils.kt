@@ -2,8 +2,8 @@ package be.vrt.ui.utils
 
 import android.app.Activity
 import android.content.Context
-import android.support.v7.widget.HTMLTextView
 import android.view.ViewManager
+import be.vrt.ui.HTMLTextView
 import org.jetbrains.anko.custom.ankoView
 
 fun android.view.ViewManager.htmlTextView(theme: Int = 0): HTMLTextView = htmlTextView(theme) {}

@@ -16,6 +16,7 @@ enum class HTMLTag() {
     ARTICLE,
     SECTION,
     FOOTER,
+    IFRAME,
 
     H1,
     H2,
