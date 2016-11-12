@@ -1,4 +1,4 @@
-package be.vrt.ui.adapter
+package be.vrt.ui.adapter.delegate
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
