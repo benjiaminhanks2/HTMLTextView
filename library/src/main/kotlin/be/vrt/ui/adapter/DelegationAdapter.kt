@@ -3,6 +3,7 @@ package be.vrt.ui.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
+import be.vrt.ui.adapter.delegate.manager.AdapterDelegatesManager
 import be.vrt.ui.model.HTMLElement
 
 class DelegationAdapter(val delegatesManager: AdapterDelegatesManager<AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>> = AdapterDelegatesManager()) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
