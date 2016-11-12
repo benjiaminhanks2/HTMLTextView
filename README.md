@@ -1,14 +1,16 @@
-# README #
+# HTMLTextView #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Working with WebViews sucks! 
+This library is designed to transform your plain old HTML into native Android Views.
 
-### What is this repository for? ###
+
+### Prerequisites ###
 
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+### Installation ###
 
 * Summary of set up
 * Configuration
@@ -23,7 +25,12 @@ This README would normally document whatever steps are necessary to get your app
 * Code review
 * Other guidelines
 
-### Who do I talk to? ###
+### Libraries used ###
 
-* Repo owner or admin
-* Other community or team contact
+* [AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates)
+* [Anko](https://github.com/Kotlin/anko)
+* [JSOUP](https://github.com/Kotlin/anko)
+
+### Contributors ###
+
+* [Simon Vergauwen](https://github.com/nomisRev)
