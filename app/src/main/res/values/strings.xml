@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLTextView</string>
 
-    <string name="example_spv_html"><![CDATA[
+    <string name="example_html"><![CDATA[
     "
     <html lang='nl' ng-controller='RenderController' class='ng-scope'>
        <body class='sporzanow' style='border-top: none;'>
