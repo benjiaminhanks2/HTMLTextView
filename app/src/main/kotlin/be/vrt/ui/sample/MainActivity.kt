@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         verticalLayout {
-            htmlTextView = htmlTextView(R.style.htmlTextView_Night) {
+            htmlTextView = htmlTextView {
             }.lparams(width = matchParent, height = matchParent)
         }
 

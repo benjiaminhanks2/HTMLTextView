@@ -1,18 +1,16 @@
 package be.vrt.ui.adapter.delegate.fallback
 import android.view.ViewGroup
-import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
+import android.widget.TextView
+import be.vrt.ui.adapter.delegate.DefaultHTMLElementAdapterDelegate
+import be.vrt.ui.adapter.layout.style.TextualViewStyle
 import be.vrt.ui.adapter.layout.style.TextualViewStyle.Companion.fallBackTextStyle
 import be.vrt.ui.adapter.layout.text.TextualLayout
 import be.vrt.ui.adapter.viewholder.fallback.FallBackViewHolder
-import be.vrt.ui.model.HTMLElement
+import be.vrt.ui.model.type.HTMLTag
 
-class FallBackDelegate : AbsHTMLElementAdapterDelegate<FallBackViewHolder>() {
-
+class FallBackDelegate : DefaultHTMLElementAdapterDelegate<TextView, TextualViewStyle, TextualLayout, FallBackViewHolder>() {
+    override fun isForViewType(tag: HTMLTag, position: Int): Boolean  = true
     override val viewType: Int = Integer.MAX_VALUE - 1
-
-    override fun onBindViewHolder(item: HTMLElement, viewHolder: FallBackViewHolder, payLoads: List<Any>) = viewHolder.bind(item)
-
-    override fun isForViewType(item: HTMLElement, items: List<HTMLElement>, position: Int): Boolean = true
 
     override fun onCreateViewHolder(parent: ViewGroup): FallBackViewHolder {
         val itemView = TextualLayout(parent.context, fallBackTextStyle)
