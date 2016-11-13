@@ -3,6 +3,7 @@ package be.vrt.ui.adapter.layout.style
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.startActivity
@@ -33,6 +34,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 15f
+                    setLineSpacing(1F, 1.1F)
                     textColor = ContextCompat.getColor(context, R.color.material_black_text_color)
                     padding = dip(8)
                 }
@@ -43,6 +45,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
+                    typeface = Typeface.DEFAULT_BOLD
                     textSize = 112f
                 }
             }
@@ -52,6 +55,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
+                    typeface = Typeface.DEFAULT_BOLD
                     textSize = 56f
                 }
             }
@@ -61,6 +65,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
+                    typeface = Typeface.DEFAULT_BOLD
                     textSize = 45f
                 }
             }
@@ -70,6 +75,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
+                    typeface = Typeface.DEFAULT_BOLD
                     textSize = 34f
                 }
             }
@@ -79,6 +85,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
+                    typeface = Typeface.DEFAULT_BOLD
                     textSize = 24f
                 }
             }
@@ -88,6 +95,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
+                    typeface = Typeface.DEFAULT_BOLD
                     textSize = 20f
                 }
             }
@@ -97,7 +105,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     apply(defaultStyle)
-                    setLineSpacing(1F, 1.5F)
+                    textSize = 16F
+                    setLineSpacing(1F, 1.35F)
                 }
             }
         }
