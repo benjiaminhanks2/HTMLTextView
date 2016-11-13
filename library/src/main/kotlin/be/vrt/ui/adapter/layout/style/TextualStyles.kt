@@ -11,6 +11,7 @@ import be.vrt.ui.R
 import be.vrt.ui.model.HTMLElement
 import org.jetbrains.anko.*
 
+//TODO: Add support for nightMode. Like Medium
 interface TextualViewStyle : ViewStyle<TextView> {
     companion object {
         val fallBackTextStyle: TextualViewStyle = object : TextualViewStyle {
