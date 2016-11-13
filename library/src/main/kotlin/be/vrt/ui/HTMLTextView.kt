@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import be.vrt.ui.adapter.DelegationAdapter
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
 import be.vrt.ui.adapter.delegate.heading.HeadingDelegate
+import be.vrt.ui.adapter.delegate.paragraph.ParagraphDelegate
 import be.vrt.ui.jsoup.JsoupParser
 import be.vrt.ui.model.HTMLElement
 
@@ -15,7 +16,9 @@ class HTMLTextView(context: Context) : RecyclerView(context) {
 
     init {
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        
         addAdapterDelegate(HeadingDelegate() as AbsHTMLElementAdapterDelegate<ViewHolder>)
+        addAdapterDelegate(ParagraphDelegate() as AbsHTMLElementAdapterDelegate<ViewHolder>)
 
         super.setAdapter(htmlDelegationAdapter)
     }

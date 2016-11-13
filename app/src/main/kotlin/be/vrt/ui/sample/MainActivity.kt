@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import be.vrt.ui.HTMLTextView
 import be.vrt.ui.utils.htmlTextView
+import org.jetbrains.anko.dip
+import org.jetbrains.anko.margin
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.verticalLayout
 
@@ -17,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         verticalLayout {
             htmlTextView = htmlTextView {
-            }.lparams(width = matchParent, height = matchParent)
+            }.lparams(width = matchParent, height = matchParent) {
+                margin = dip(8)
+            }
         }
 
         htmlTextView?.setHTMLString(this.getString(R.string.example_spv_html))

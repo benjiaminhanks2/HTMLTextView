@@ -28,7 +28,13 @@ class HeadingDelegate : AbsHTMLElementAdapterDelegate<HeadingViewHolder>() {
         viewHolder.bind(item)
     }
 
-    override fun isForViewType(item: HTMLElement, items: List<HTMLElement>, position: Int): Boolean = position == 10
+    override fun isForViewType(item: HTMLElement, items: List<HTMLElement>, position: Int): Boolean {
+        if(item.htmlTag != null) {
+            tag = item.htmlTag
+        }
+
+        return tag == HTMLTag.H1 || tag == HTMLTag.H2 || tag == HTMLTag.H3 || tag == HTMLTag.H4 || tag == HTMLTag.H5 || tag == HTMLTag.H6
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup): HeadingViewHolder = HeadingViewHolder(TextualLayout(parent.context, style()))

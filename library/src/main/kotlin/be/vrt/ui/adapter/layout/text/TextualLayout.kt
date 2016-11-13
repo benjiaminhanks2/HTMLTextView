@@ -11,7 +11,6 @@ class TextualLayout(val context: Context, val textualStyle: TextualViewStyle = T
     override val view: TextView by lazy {
         context.UI {
             textView {
-
             }.setStyle(textualStyle)
         }.view as TextView
     }

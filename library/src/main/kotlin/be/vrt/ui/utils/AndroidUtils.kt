@@ -5,14 +5,12 @@ import android.support.v4.util.SparseArrayCompat
 /**
  * Returns `true` if at least one element matches the given [predicate].
  */
-inline fun <E> SparseArrayCompat<E>.findAppropriateViewType(fallBackViewType : Int, predicate: (E?) -> Boolean): Int {
-    var viewType : Int = fallBackViewType
-    (0..size()).forEach {
-        val adapterDelegate: E? = get(it)
+inline fun <E> SparseArrayCompat<E>.findAppropriateViewType(fallBackViewType : Int, predicate: (E) -> Boolean): Int {
+    (0..size() -1).forEach {
+        val adapterDelegate: E = get(keyAt(it))
         if (predicate(adapterDelegate)) {
-            viewType = keyAt(it)
-            return@forEach
+            return keyAt(it)
         }
     }
-    return viewType
+    return fallBackViewType
 }
