@@ -1,4 +1,4 @@
-package be.vrt.ui.adapter.delegate.paragraph
+package be.vrt.ui.adapter.delegate.text.paragraph
 
 import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
@@ -12,9 +12,9 @@ class ParagraphDelegate : AbsHTMLElementAdapterDelegate<ParagraphViewHolder>() {
     override val viewType: Int
         get() = 34356
 
-    override fun onBindViewHolder(item: HTMLElement, viewHolder: ParagraphViewHolder, payLoads: List<Any>) {
-        viewHolder.bind(item)
-    }
+    override fun onBindViewHolder(item: HTMLElement, viewHolder: ParagraphViewHolder, payLoads: List<Any>) =
+            viewHolder.bind(item)
+
 
     override fun isForViewType(item: HTMLElement, items: List<HTMLElement>, position: Int): Boolean {
         var isForViewType = false
@@ -24,5 +24,5 @@ class ParagraphDelegate : AbsHTMLElementAdapterDelegate<ParagraphViewHolder>() {
         return isForViewType
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup): ParagraphViewHolder = ParagraphViewHolder(TextualLayout(parent.context, TextualViewStyle.PStyle))
+    override fun onCreateViewHolder(parent: ViewGroup): ParagraphViewHolder = ParagraphViewHolder(TextualLayout(parent.context, TextualViewStyle.body2Style))
 }

@@ -1,4 +1,4 @@
-package be.vrt.ui.adapter.delegate.heading
+package be.vrt.ui.adapter.delegate.text.heading
 
 import android.view.ViewGroup
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
@@ -15,13 +15,13 @@ class HeadingDelegate : AbsHTMLElementAdapterDelegate<HeadingViewHolder>() {
     var tag: HTMLTag = HTMLTag.H1
     fun style(): TextualViewStyle =
             when (tag) {
-                HTMLTag.H1 -> TextualViewStyle.H1Style
-                HTMLTag.H2 -> TextualViewStyle.H2Style
-                HTMLTag.H3 -> TextualViewStyle.H3Style
-                HTMLTag.H4 -> TextualViewStyle.H4Style
-                HTMLTag.H5 -> TextualViewStyle.H5Style
-                HTMLTag.H6 -> TextualViewStyle.H6Style
-                else -> TextualViewStyle.H1Style
+                HTMLTag.H1 -> TextualViewStyle.display4Style
+                HTMLTag.H2 -> TextualViewStyle.display3Style
+                HTMLTag.H3 -> TextualViewStyle.display2Style
+                HTMLTag.H4 -> TextualViewStyle.display1Style
+                HTMLTag.H5 -> TextualViewStyle.headLineStyle
+                HTMLTag.H6 -> TextualViewStyle.titleStyle
+                else -> TextualViewStyle.titleStyle
             }
 
     override fun onBindViewHolder(item: HTMLElement, viewHolder: HeadingViewHolder, payLoads: List<Any>) {
