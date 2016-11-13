@@ -9,8 +9,13 @@ buildscript {
 
         jsoup_version = "1.10.1"
 
+        picasso_version = "2.5.2"
+        okio_version = "1.11.0"
+        okhttp_version = "3.4.2"
+
         //Reactive
-        rxjava2_version = "2.0.0-RC5"
+        rxjava2_version = "2.0.1"
+        rxandroid_version = "1.2.1"
 
         //Kotlin
         kotlin_version = '1.0.4'
@@ -24,13 +29,25 @@ buildscript {
     }
 
     ext.libraries = [
-            android_appcompat: "com.android.support:appcompat-v7:$android_support_version",
+            android_appcompat: [
+                    "com.android.support:appcompat-v7:$android_support_version",
+                    "com.android.support:support-v4:$android_support_version"
+            ],
             design_support   : "com.android.support:design:$android_support_version",
 
             jsoup            : "org.jsoup:jsoup:$jsoup_version",
 
+            picasso          : "com.squareup.picasso:picasso:$picasso_version",
+            okhttp           : [
+                    "com.squareup.okio:okio:$okio_version",
+                    "com.squareup.okhttp3:okhttp:$okhttp_version"
+            ],
+
             //Reactive
-            rxjava2          : "io.reactivex.rxjava2:rxjava:$rxjava2_version",
+            rxjava2          : [
+                    "io.reactivex.rxjava2:rxjava:$rxjava2_version",
+                    "io.reactivex:rxandroid:$rxandroid_version",
+            ],
 
             //Kotlin
             kotlin           : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
