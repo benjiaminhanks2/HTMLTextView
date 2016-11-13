@@ -32,8 +32,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 15f
-                    padding = dip(8)
                     textColor = ContextCompat.getColor(context, R.color.material_black_text_color)
+                    padding = dip(8)
                 }
             }
         }
