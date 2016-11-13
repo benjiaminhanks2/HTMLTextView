@@ -13,7 +13,7 @@ class ImageLayout(val context: Context, val imageViewStyle: ImageViewStyle = Ima
     override val view: FrameLayout by lazy {
         context.UI {
             frameLayout {
-                lparams(width = matchParent, height = dip(200))
+                lparams(width = matchParent, height = dip(250))
             }.setStyle(imageViewStyle)
         }.view as FrameLayout
     }
