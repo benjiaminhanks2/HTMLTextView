@@ -10,8 +10,7 @@ import be.vrt.ui.model.type.HTMLTag
 
 class ParagraphDelegate : DefaultHTMLElementAdapterDelegate<TextView, TextualViewStyle, TextualLayout, ParagraphViewHolder>() {
 
-    override val viewType: Int
-        get() = 34356
+    override val viewType: Int = -1
 
     override fun isForViewType(tag: HTMLTag, position: Int): Boolean = tag == HTMLTag.P
 

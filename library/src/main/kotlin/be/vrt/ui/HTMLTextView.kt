@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import be.vrt.ui.adapter.DelegationAdapter
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
+import be.vrt.ui.adapter.delegate.fallback.WebViewFallbackDelegate
 import be.vrt.ui.adapter.delegate.image.ImageDelegate
 import be.vrt.ui.adapter.delegate.text.heading.HeadingDelegate
 import be.vrt.ui.adapter.delegate.text.paragraph.LinkDelegate
@@ -29,10 +30,11 @@ class HTMLTextView(context: Context) : RecyclerView(context) {
                 HeadingDelegate(),
                 ParagraphDelegate(),
                 LinkDelegate(),
-                ImageDelegate()
+                ImageDelegate(),
+                WebViewFallbackDelegate()
         )
         list.forEach {
-            addAdapterDelegate(it as AbsHTMLElementAdapterDelegate<ViewHolder>)
+            htmlDelegationAdapter.delegatesManager.addDelegate(it as AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>)
         }
     }
 

@@ -35,6 +35,17 @@ class AdapterDelegatesManager<T : AbsHTMLElementAdapterDelegate<RecyclerView.Vie
         return this
     }
 
+    /**
+     * Only to be used for fallback delegates
+     */
+    internal fun addDelegate(delegate: T) {
+        var viewType = FALLBACK_DELEGATE_VIEW_TYPE - 1
+        while (delegates.get(viewType) != null) {
+            viewType--
+        }
+        addDelegate(viewType, delegate)
+    }
+
     fun removeDelegate(delegate: T): AdapterDelegatesManager<T> {
         val indexToRemove = delegates.indexOfValue(delegate)
 

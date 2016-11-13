@@ -34,9 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     class QuoteDelegate : AbsHTMLElementAdapterDelegate<QuoteViewHolder>() {
-        override val viewType: Int
-            get() = 34355
-
+        override val viewType: Int = 1
         override fun onBindViewHolder(item: HTMLElement, viewHolder: QuoteViewHolder, payLoads: List<Any>) = viewHolder.bind(item)
 
         override fun isForViewType(item: HTMLElement, items: List<HTMLElement>, position: Int): Boolean {

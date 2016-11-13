@@ -10,8 +10,7 @@ import be.vrt.ui.adapter.viewholder.text.paragraph.LinkViewHolder
 import be.vrt.ui.model.type.HTMLTag
 
 class LinkDelegate : DefaultHTMLElementAdapterDelegate<TextView, TextualViewStyle, TextualLayout, LinkViewHolder>() {
-    override val viewType: Int
-        get() = 64363
+    override val viewType: Int = -1
 
     override fun isForViewType(tag: HTMLTag, position: Int): Boolean  = tag == HTMLTag.A
 
