@@ -9,17 +9,16 @@ import android.support.v4.content.ContextCompat.startActivity
 import android.widget.TextView
 import be.vrt.ui.R
 import be.vrt.ui.model.HTMLElement
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.onClick
-import org.jetbrains.anko.padding
-import org.jetbrains.anko.textColor
+import org.jetbrains.anko.*
 
-//TODO: chain styles
 interface TextualViewStyle : ViewStyle<TextView> {
     companion object {
         val fallBackTextStyle: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
+                    context.configuration(nightMode = true) {
+
+                    }
                     textSize = 15f
                     setLineSpacing(1F, 1.5F)
                     padding = dip(8)
@@ -33,20 +32,17 @@ interface TextualViewStyle : ViewStyle<TextView> {
             override fun invoke(textView: TextView) {
                 with(textView) {
                     textSize = 15f
-                    setLineSpacing(1F, 1.5F)
                     padding = dip(8)
-                    textColor = Color.parseColor("#212121")
+                    textColor = ContextCompat.getColor(context, R.color.material_black_text_color)
                 }
             }
         }
 
         val display4Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
-                with(textView)
-                {
-                    textSize = 112F
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
+                with(textView) {
+                    apply(defaultStyle)
+                    textSize = 112f
                 }
             }
         }
@@ -54,9 +50,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val display3Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
-                    textSize = 56F
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
+                    apply(defaultStyle)
+                    textSize = 56f
                 }
             }
         }
@@ -64,9 +59,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val display2Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
+                    apply(defaultStyle)
                     textSize = 45f
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
                 }
             }
         }
@@ -74,9 +68,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val display1Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
+                    apply(defaultStyle)
                     textSize = 34f
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
                 }
             }
         }
@@ -84,9 +77,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val headLineStyle: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
+                    apply(defaultStyle)
                     textSize = 24f
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
                 }
             }
         }
@@ -94,9 +86,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val titleStyle: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
+                    apply(defaultStyle)
                     textSize = 20f
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
                 }
             }
         }
@@ -104,10 +95,8 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val body2Style: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
-                    textSize = 15f
+                    apply(defaultStyle)
                     setLineSpacing(1F, 1.5F)
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
                 }
             }
         }
@@ -115,10 +104,7 @@ interface TextualViewStyle : ViewStyle<TextView> {
         val linkStyle: TextualViewStyle = object : TextualViewStyle {
             override fun invoke(textView: TextView) {
                 with(textView) {
-                    textSize = 15f
-                    setLineSpacing(1F, 1.5F)
-                    padding = dip(8)
-                    textColor = Color.parseColor("#212121")
+                    apply(body2Style)
                     paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
                     //This is just a POC
