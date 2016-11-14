@@ -35,7 +35,6 @@ interface TextualViewStyle : ViewStyle<TextView> {
                 with(textView) {
                     textSize = 15f
                     setLineSpacing(1F, 1.1F)
-                    textColor = ContextCompat.getColor(context, R.color.material_gray_900)
                     padding = dip(8)
                 }
             }

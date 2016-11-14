@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import be.vrt.ui.model.HTMLElement
 
-open abstract class AbsHTMLElementAdapterDelegate<VH : RecyclerView.ViewHolder> {
+abstract class AbsHTMLElementAdapterDelegate<VH : RecyclerView.ViewHolder> {
 
     abstract val viewType: Int
 

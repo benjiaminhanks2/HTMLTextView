@@ -2,6 +2,7 @@ package be.vrt.ui.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDelegate
 import android.support.v7.widget.RecyclerView
 import be.vrt.ui.HTMLTextView
 import be.vrt.ui.adapter.delegate.AbsHTMLElementAdapterDelegate
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             htmlTextView = htmlTextView {
             }.lparams(width = matchParent, height = matchParent)
         }
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         htmlTextView?.setHTMLString(this.getString(R.string.example_html))
         htmlTextView?.addAdapterDelegate(QuoteDelegate() as AbsHTMLElementAdapterDelegate<RecyclerView.ViewHolder>)
