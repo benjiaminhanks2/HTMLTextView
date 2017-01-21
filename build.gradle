@@ -1,24 +1,24 @@
 buildscript {
     ext {
-        buildToolsVersion = "25.0.0"
+        buildToolsVersion = "25.0.1"
         compileSdkVersion = 25
         defaultMinSdkVersion = 16
         defaultTargetSdkVersion = 25
 
-        android_support_version = "25.0.0"
+        android_support_version = "25.1.0"
 
-        jsoup_version = "1.10.1"
+        jsoup_version = "1.10.2"
 
         picasso_version = "2.5.2"
         okio_version = "1.11.0"
-        okhttp_version = "3.4.2"
+        okhttp_version = "3.5.0"
 
         //Reactive
         rxjava2_version = "2.0.1"
         rxandroid_version = "1.2.1"
 
         //Kotlin
-        kotlin_version = '1.0.4'
+        kotlin_version = '1.0.6'
         anko_version = "0.9"
 
         //Testing
@@ -74,7 +74,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
